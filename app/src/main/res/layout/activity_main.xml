@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:onClick="kind"
             android:textOff="handasit"
-            android:texton="heshbonit" />
+            android:textOn="heshbonit" />
 
         <EditText
             android:id="@+id/first"

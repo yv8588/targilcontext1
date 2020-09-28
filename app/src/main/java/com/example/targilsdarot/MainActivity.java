@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 boolean kind=false;
 Switch choose;
 EditText first,d;
-Integer a,b;
+double a,b;
 String firsts,ds;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ String firsts,ds;
             Toast.makeText(getApplicationContext(),"enter num",Toast.LENGTH_SHORT).show();
         }
         else {
-            a=Integer.parseInt(firsts);
-            b=Integer.parseInt(ds);
+            a=Double.parseDouble(firsts);
+            b=Double.parseDouble(ds);
         }
         Intent si=new Intent(this,calc.class);
         si.putExtra("k",kind);//סוג סדרה

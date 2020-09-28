@@ -46,12 +46,12 @@
             android:text="sn" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/list"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </ListView>
 
 </LinearLayout>

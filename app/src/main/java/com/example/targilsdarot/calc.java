@@ -15,10 +15,10 @@ public class calc extends AppCompatActivity implements AdapterView.OnItemClickLi
 {
     TextView td, tsn, tx, tn;
     ListView list;
-    int x1, d,i, a, n = 2;
+    int i;
+    double x1, d2, a, n = 2;
     boolean kind;
-    double a2;
-    String sa;
+    String sa,sx,sd;
     String[] sidra = new String[20];
 
     @Override
@@ -33,37 +33,34 @@ public class calc extends AppCompatActivity implements AdapterView.OnItemClickLi
         tn = (TextView) findViewById(R.id.tn);
         td = (TextView) findViewById(R.id.td);
         list = (ListView) findViewById(R.id.list);
-        list.setOnItemClickListener(this);
         list.setChoiceMode(list.CHOICE_MODE_SINGLE);
         ArrayAdapter<String>adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,sidra);
         list.setAdapter(adp);
+        list.setOnItemClickListener(this);
 
-        x1 = gi.getIntExtra("a", 1);
+        x1 = gi.getDoubleExtra("a", 1);
         kind = gi.getBooleanExtra("k", false);
-        d = gi.getIntExtra("b", 1);
-        tx.setText(x1);
-        td.setText(d);
+        d2 = gi.getDoubleExtra("b", 1);
+        sx=String.valueOf(x1);
+        sd=String.valueOf(d2);
+        tx.setText(sx);
+        td.setText(sd);
         if (kind) {
             for ( i = 0; i < 20; i++) {
-                a = x1 + (d * (n - 1));
-                sa=Integer.toString(a);
+                a = x1 + (d2 * (n - 1));
+                sa=String.valueOf(a);
                 sidra[i] = sa;
                 n++;
             }
 
         }
         else{
-            Double n2=Double.valueOf(n);
-            Double d2=Double.valueOf(d);
-            Double x1s=Double.valueOf(x1);
-            // math.pow uses double
 
             for ( i = 0; i < 20; i++){
-                a2=x1s*Math.pow(d2,(n2-1));
-                a=(int) Math.round(a2);
-                sa=Integer.toString(a);
+                a=x1*Math.pow(d2,(n-1));
+                sa=String.valueOf(a);
                  sidra[i]=sa;
-                n2++;
+                n++;
             }
 
         }
@@ -72,6 +69,7 @@ public class calc extends AppCompatActivity implements AdapterView.OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
          tn.setText(sidra[position]);
-         tsn.setText(position+2);
+         Integer m=position+2;
+         tsn.setText(m.toString());
     }
 }
