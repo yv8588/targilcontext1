@@ -23,8 +23,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:onClick="kind"
-            android:textOff="handasit"
-            android:textOn="heshbonit" />
+            android:textOff="@string/handasit"
+            android:textOn="@string/heshbonit"
+            android:showText="true"/>
 
         <EditText
             android:id="@+id/first"

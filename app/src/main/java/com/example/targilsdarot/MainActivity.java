@@ -1,14 +1,15 @@
+/**
+ * @author yoad.
+ * Arithmetic progression/Geometric series calculator with context menu.
+ */
 package com.example.targilsdarot;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
-
 public class MainActivity extends AppCompatActivity {
 boolean kind=false;
 Switch choose;
@@ -26,15 +27,25 @@ String firsts,ds;
         d=(EditText)findViewById(R.id.d);
 
     }
+    /**
+     * checking wich kind of series the user choose and puts true if its arithmetic series false if geometric
+     * <p>
+     * @param view view.
+     */
 
     public void kind(View view) {
         if(choose.isChecked()){
-            kind=true;//סדרה חשבונית(true)
+            kind=true;//arithmetic series(TRUE).
         }
         else{
-            kind=false;//סדרה הנדסית(FALSE)
+            kind=false;//geometric series (FALSE).
         }
     }
+    /**
+     * move all the information about the kind of series first num and d/q.
+     * <p>
+     * @param view view.
+     */
 
     public void gosec(View view) {
         firsts=first.getText().toString();
@@ -47,9 +58,9 @@ String firsts,ds;
             b=Double.parseDouble(ds);
         }
         Intent si=new Intent(this,calc.class);
-        si.putExtra("k",kind);//סוג סדרה
-        si.putExtra("a",a);//איבר ראשון
-        si.putExtra("b",b);//מכפיל
+        si.putExtra("k",kind);
+        si.putExtra("a",a);
+        si.putExtra("b",b);
         startActivity(si);
 
     }
