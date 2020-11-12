@@ -28,9 +28,9 @@ String firsts,ds;
 
     }
     /**
-     * checking wich kind of series the user choose and puts true if its arithmetic series false if geometric
+     * checking which kind of series the user choose and puts true if its arithmetic series false if geometric
      * <p>
-     * @param view view.
+     * @param view the xml view(switch).
      */
 
     public void kind(View view) {
@@ -44,7 +44,7 @@ String firsts,ds;
     /**
      * move all the information about the kind of series first num and d/q.
      * <p>
-     * @param view view.
+     * @param view the xml view(button).
      */
 
     public void gosec(View view) {
