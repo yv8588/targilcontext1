@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class calc extends AppCompatActivity implements View.OnCreateContextMenuListener,AdapterView.OnItemClickListener
+public class calc extends AppCompatActivity implements View.OnCreateContextMenuListener
 {
     TextView tx,text;
     ListView list;
@@ -41,7 +41,6 @@ public class calc extends AppCompatActivity implements View.OnCreateContextMenuL
         list.setChoiceMode(list.CHOICE_MODE_SINGLE);
         ArrayAdapter<String>adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,sidra);
         list.setAdapter(adp);
-        list.setOnItemClickListener(this);
         x1 = gi.getDoubleExtra("a", 1);
         kind = gi.getBooleanExtra("k", false);
         d2 = gi.getDoubleExtra("b", 1);
@@ -49,6 +48,7 @@ public class calc extends AppCompatActivity implements View.OnCreateContextMenuL
         sd=String.valueOf(d2);
          sidra[0]=sx;
         tx.setText(sx);
+        list.setOnCreateContextMenuListener(this);
         if (kind) {
             for ( i = 1; i < 20; i++) {
                 a = x1 + (d2 * (n - 1));
@@ -77,23 +77,6 @@ public class calc extends AppCompatActivity implements View.OnCreateContextMenuL
     public void backfirst(View view) {
         finish();
     }
-    @Override
-    /**
-     * activated when an item on the list got clicked
-     * @param parent the adapter
-     * @param view the certain row view
-     * @param position the position in the arr
-     * @param id the row num in the list
-     */
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        pos=position+1;
-        for(int j=0;j<position;j++){
-            String s=sidra[j];
-            sums=Double.parseDouble(s);
-            sum=sum+sums;
-        }
-        view.setOnCreateContextMenuListener(this);
-    }
     /**
      * creating context menu
      * <p>
@@ -115,6 +98,13 @@ public class calc extends AppCompatActivity implements View.OnCreateContextMenuL
      */
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        pos = info.position+1;
+        for(int j=0;j<info.position;j++){
+            String s=sidra[j];
+            sums=Double.parseDouble(s);
+            sum=sum+sums;
+        }
         String st = item.getTitle().toString();
         if(st.equals("this a position")){
             text.setText("the position");
